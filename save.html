@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phim đã lưu</title>
+    <link rel="stylesheet" href="movie.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Blue and Pink Aesthetic Film Company Logo.png" />
+    <script src="https://kit.fontawesome.com/98638255fc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img onclick="hreftoIndex()" src="Blue and Pink Aesthetic Film Company Logo.png" onclick="hreftoIndex()" alt="">
+        <nav>
+            <a onclick="checkAcc()" href="">Phim đã lưu</a>
+            <a href="">Phim mới</a>
+            <a href="">Phim lẻ</a>
+            <a href="">Phim bộ</a>
+            <a href="#" id="showGenres">Thể loại</a>
+            <a href="#" id="showYears">Năm phát hành</a>
+        </nav>
+        <div class="search">
+            <input type="search" id="search" placeholder="Tìm kiếm..."><i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user" id="user">
+           
+        </div>
+        <div id="genreList" class="dropdown-content"></div>
+        <div id="yearList" class="dropdown-content"></div>
+    </header>
+
+    <div class="search-container">
+        <h2 id="ketqua"> *Các bộ phim bạn đã lưu*</h2>
+        
+        <div class="movie" id="movie"></div>
+    </div>
+        
+    <script src="js/data.js"></script>
+    <script src="js/feature.js"></script>
+    <script src="js/save.js"></script>
+</body>
+</html>

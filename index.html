@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watching</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Blue and Pink Aesthetic Film Company Logo.png" />
+    <script
+    src="https://kit.fontawesome.com/98638255fc.js"
+    crossorigin="anonymous"
+  ></script>
+  
+</head>
+<body>
+    <header>
+        <img onclick="hreftoIndex()" src="Blue and Pink Aesthetic Film Company Logo.png" alt="">
+        <nav id="mainNav">
+            <a href="#" onclick="checkAcc(event)">Phim đã lưu</a>
+            <a href="">Phim mới</a>
+            <a href="">Phim lẻ</a>
+            <a href="">Phim bộ</a>
+            <a href="#" id="showGenres">Thể loại</a>
+            <a href="#" id="showYears">Năm phát hành</a>
+        </nav>
+        <div class="search">
+            <input type="search" id="search" placeholder="Tìm kiếm..."><i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user" id="user" onclick="hreftoSignup()">Username</div>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="Ham-bars" height="44px" viewBox="0 -960 960 960" width="44px" fill="#e8eaed" onclick="toggleNav()">
+            <path class="bars" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+        </svg>
+        <div id="genreList" class="dropdown-content"></div>
+        <div id="yearList" class="dropdown-content"></div>
+    </header>
+
+    
+    <!-- <div class="side-nav" id="sideNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="side-search">
+            <input type="search" id="sideSearch" class="search" placeholder="Tìm kiếm..."><i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user" id="sideUser" onclick="hreftoSignup()">Username</div>
+        <a href="#" onclick="checkAcc(event)">Phim đã lưu</a>
+        <a href="#">Phim mới</a>
+        <a href="#">Phim lẻ</a>
+        <a href="#">Phim bộ</a>
+        <a href="#" id="sideShowGenres">Thể loại</a>
+        <a href="#" id="sideShowYears">Năm phát hành</a>
+    </div> -->
+    
+    <div class="container">
+        <h2 class="section-title">Nổi bật</h2>
+        <div class="phimNoibat" id="phimNoiBat">
+            <button class="scroll-button left" onclick="scrollLeft('Phim-noi-bat')">&#10094;</button>
+            <div class="PhimNoibat-container" id="Phim-noi-bat"></div>
+            <button class="scroll-button right" onclick="scrollRight('Phim-noi-bat')">&#10095;</button>
+        </div>
+        <h2 class="section-title">Phim Mới</h2>
+        <div class="phimoi" id="phimMoi">
+            <button class="scroll-button left" onclick="scrollLeft('Phim-Moi')">&#10094;</button>
+            <div class="phimoi_container" id="Phim-Moi"></div>
+            <button class="scroll-button right" onclick="scrollRight('Phim-Moi')">&#10095;</button>
+        </div>
+        <h2 class="section-title">Phim Lẻ</h2>
+        <div class="phim-le" id="phimLe">
+            <button class="scroll-button left" onclick="scrollLeft('Phimle-container')">&#10094;</button>
+            <div class="Phimle-container" id="Phimle-container"></div>
+            <button class="scroll-button right" onclick="scrollRight('Phimle-container')">&#10095;</button>
+        </div>
+        <h2 class="section-title">Anime</h2>
+        <div class="Anime" id="anime">
+            <button class="scroll-button left" onclick="scrollLeft('Anime-container')">&#10094;</button>
+            <div class="Anime-container" id="Anime-container"></div>
+            <button class="scroll-button right" onclick="scrollRight('Anime-container')">&#10095;</button>
+        </div>
+    </div>
+    <footer>
+        <div class="ThongTin">
+            <img src="Blue and Pink Aesthetic Film Company Logo.png" alt="">
+            <h3>Trang xem phim Online với giao diện mới được bố trí và thiết kế thân thiện với người dùng. Nguồn phim được tổng hợp từ các website lớn với đa dạng các đầu phim và thể loại vô cùng phong phú.</h3>
+        </div>
+        <ul>
+            <h3>Phim Mới</h3>
+            <a href="">Khoa học</a>
+            <a href="">Kinh dị</a>
+            <a href="">Hành động</a>
+            <a href="">Hài kịch</a>
+            <a href="">Phim lẻ</a>
+        </ul>
+        <ul>
+            <h3>Thông Tin</h3>
+            <li>Địa chỉ: Tầng 10, Tòa nhà ABC, Đường XYZ, Quận 1, TP. Hồ Chí Minh</li>
+            <li>Điện thoại: +84 123 456 789</li>
+            <li>Email: support@phimv.com</li>
+        </ul>
+    </footer>
+    <footer>
+        <h2>@PhimV</h2>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/feature.js"></script>
+</body>
+</html>

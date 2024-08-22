@@ -1,0 +1,48 @@
+search-container {
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px; /* Điều chỉnh chiều rộng tối đa của container */
+    color: #fff;
+}
+
+/* Tiêu đề kết quả tìm kiếm */
+#ketqua {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffcc00; /* Màu nổi bật cho tiêu đề */
+    border-left: 0.5px #b00 solid;
+}
+
+/* Container chứa danh sách phim */
+.movie {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+button {
+    font-size: 24px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button:hover {
+    background-color: #555;
+}
+
+button:active {
+    transform: translateX(-50%) scale(0.98);
+}

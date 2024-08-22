@@ -1,0 +1,17 @@
+web phim 
+api:https://www.omdbapi.com/?t=Inception&apikey=44cedb5f44cedb5f
+
+
+ 
+Icon Family
+
+Classic
+Select an Icon Style
+<i class="fa-solid fa-bars"></i>
+
+ 
+Icon Family
+
+Classic
+Select an Icon Style
+<i class="fa-solid fa-x"></i>
