@@ -14,6 +14,7 @@ async function getMovieInfo() {
         if (data.Response === 'True') {
             const movies = data.Search;
             const movieContainer = document.getElementById('movie');
+
             movieContainer.innerHTML = ''; 
 
             movies.forEach(movie => {
@@ -32,6 +33,7 @@ async function getMovieInfo() {
                         <h5 class="year_movie">Năm phát hành: ${movie.Year}</h5>
                     </div>
                 `;
+               
             });
         } else {
             document.getElementById('movie').textContent = 'Không có kết quả nào';
@@ -40,6 +42,15 @@ async function getMovieInfo() {
         console.error(err.message);
         document.getElementById('movie').textContent = 'Đã xảy ra lỗi khi tìm kiếm phim';
     }
+    finally{
+        loadingScreen.style.display = 'none';
+    }
 }
 
-getMovieInfo();
+
+window.addEventListener('load', () => {
+    loadingScreen.style.display = 'flex';
+    
+    // Gọi hàm để hiển thị thông tin phim
+    getMovieInfo();
+});

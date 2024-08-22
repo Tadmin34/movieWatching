@@ -100,20 +100,24 @@ async function MoviesByYear() {
 }
 
 async function displayMovies() {
-    // Chỉ lấy các phim trong phạm vi hiện tại
-    const moviesToDisplay = totalMovies.slice(currentOffset, currentOffset + limit);
+    // Hiển thị thanh loading
+    document.getElementById('loadingScreen').style.display = 'flex';
 
-    for (const movie of moviesToDisplay) {
-        try {
+    const moviesToDisplay = totalMovies.slice(currentOffset, currentOffset + limit);
+    const movieContainer = document.getElementById('movie');
+
+    let moviesHTML = '';
+
+    try {
+        for (const movie of moviesToDisplay) {
             const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${apiKey}`);
             if (!response.ok) {
                 throw new Error('Không thể tìm thấy phim');
             }
             const data = await response.json();
             if (data.Response === 'True') {
-                // Kiểm tra nếu phim đã được lưu
                 const isSaved = isMovieSaved(data.Title);
-                document.getElementById('movie').innerHTML += `
+                moviesHTML += `
                     <div class="phim">
                         <i class="fa${isSaved ? '-solid' : '-regular'} fa-bookmark" 
                            onclick="toggleBookmark(this, '${data.Title}')"
@@ -127,16 +131,23 @@ async function displayMovies() {
             } else {
                 console.error(`Phim "${movie}" không tìm thấy`);
             }
-        } catch (err) {
-            console.error(err.message);
         }
-    }
 
-    // Cập nhật trạng thái của nút "More"
-    if (currentOffset + limit < totalMovies.length) {
-        document.getElementById('more').style.display = 'block'; // Hiển thị nút "More"
-    } else {
-        document.getElementById('more').style.display = 'none'; // Ẩn nút "More"
+        // Cập nhật DOM sau khi tất cả phim đã được xử lý
+        movieContainer.innerHTML += moviesHTML;
+
+    } catch (err) {
+        console.error(err.message);
+    } finally {
+        // Ẩn thanh loading
+        document.getElementById('loadingScreen').style.display = 'none';
+
+        // Cập nhật trạng thái của nút "More"
+        if (currentOffset + limit < totalMovies.length) {
+            document.getElementById('more').style.display = 'block'; // Hiển thị nút "More"
+        } else {
+            document.getElementById('more').style.display = 'none'; // Ẩn nút "More"
+        }
     }
 }
 

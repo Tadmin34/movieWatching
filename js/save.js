@@ -35,6 +35,9 @@ async function displaySavedMovies() {
         } catch (err) {
             console.error(err.message);
         }
+        finally{
+            loadingScreen.style.display = 'none';
+        }
     }
 }
 
@@ -44,5 +47,10 @@ function isMovieSaved(movieName) {
     return currentUser && currentUser.savedMovies && currentUser.savedMovies.includes(movieName);
 }
 
-// Gọi hàm để hiển thị phim đã lưu khi trang được tải
-displaySavedMovies();
+// Gọi hàm để hiển thị phim đã lưu khi trang được tả
+window.addEventListener('load', () => {
+    loadingScreen.style.display = 'flex';
+    
+    // Gọi hàm để hiển thị thông tin phim
+    displaySavedMovies();
+});

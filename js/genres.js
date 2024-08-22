@@ -94,8 +94,15 @@ async function Moviesgenres() {
 }
 
 async function displayMovies() {
+    // Hiển thị thanh loading
+    document.getElementById('loadingScreen').style.display = 'flex';
+
     // Chỉ lấy các phim trong phạm vi hiện tại
     const moviesToDisplay = totalMovies.slice(currentOffset, currentOffset + limit);
+    const movieContainer = document.getElementById('movie');
+
+    // Tạo một chuỗi HTML để cập nhật DOM sau khi tất cả phim đã được xử lý
+    let moviesHTML = '';
 
     for (const movie of moviesToDisplay) {
         try {
@@ -107,7 +114,7 @@ async function displayMovies() {
             if (data.Response === 'True') {
                 // Kiểm tra nếu phim đã được lưu
                 const isSaved = isMovieSaved(data.Title);
-                document.getElementById('movie').innerHTML += `
+                moviesHTML += `
                     <div class="phim">
                         <i class="fa${isSaved ? '-solid' : '-regular'} fa-bookmark" 
                            onclick="toggleBookmark(this, '${data.Title}')"
@@ -125,6 +132,12 @@ async function displayMovies() {
             console.error(err.message);
         }
     }
+
+    // Cập nhật DOM sau khi tất cả phim đã được xử lý
+    movieContainer.innerHTML += moviesHTML;
+
+    // Ẩn thanh loading
+    document.getElementById('loadingScreen').style.display = 'none';
 
     // Cập nhật trạng thái của nút "More"
     if (currentOffset + limit < totalMovies.length) {

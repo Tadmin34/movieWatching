@@ -2,7 +2,7 @@ const phimNoiBat = document.getElementById("Phim-noi-bat");
 const phimMoi = document.getElementById("Phim-Moi");
 const phimLe = document.getElementById("Phimle-container");
 const anime = document.getElementById("Anime-container");
-
+const loadingScreen = document.getElementById('loadingScreen');
 
 async function fetchAndDisplayMovies(movieList, container) {
     for (const movie of movieList) {
@@ -32,6 +32,7 @@ async function fetchAndDisplayMovies(movieList, container) {
         } catch (err) {
             console.error(err.message);
         }
+        attachEventListeners(container)        
     }
 }
 
@@ -47,7 +48,15 @@ async function getMovieInfo() {
     await fetchAndDisplayMovies(moviein2024, phimMoi);
     await fetchAndDisplayMovies(movieSeries, phimLe);
     await fetchAndDisplayMovies(animeSeries, anime);
+    
+    // Ẩn thanh loading sau khi tất cả phim đã tải xong
+    loadingScreen.style.display = 'none';
 }
 
-// Gọi hàm để hiển thị thông tin phim
-getMovieInfo();
+// Hiển thị thanh loading khi trang bắt đầu tải
+window.addEventListener('load', () => {
+    loadingScreen.style.display = 'flex';
+    
+    // Gọi hàm để hiển thị thông tin phim
+    getMovieInfo();
+});

@@ -153,3 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = "save.html";
         }
     };
+    function saveMovieTitle(event) {
+        const movieTitle = event.currentTarget.querySelector('.name-movie').textContent.replace('Tên phim: ', '');
+        localStorage.setItem('selectedMovie', movieTitle);
+        console.log(`Phim đã chọn: ${movieTitle}`);
+    }
+    function attachEventListeners(container) {
+        const phims = container.querySelectorAll('.phim');
+        phims.forEach(phim => {
+            phim.addEventListener('click', saveMovieTitle);
+        });
+    }
+   
