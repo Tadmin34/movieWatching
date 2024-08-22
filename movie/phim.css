@@ -1,0 +1,130 @@
+/* General Styles */
+body {
+    background-color: #222;
+    color: #e8eaed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for movie details */
+.container {
+    padding: 20px;
+}
+
+/* Styles for the movie details container */
+.movie-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #333;
+}
+
+/* Styles for the movie poster */
+.movie-poster {
+    width: 500px;
+    height: 750px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    border: 2px solid red;
+}
+
+/* Styles for the movie info section */
+.movie-info {
+    flex: 1;
+    color: #ec1010;
+}
+
+/* Title styling */
+.movie-title {
+    font-size: 2.5rem;
+    color: #d8db0c;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e8eaed;
+    padding-bottom: 10px;
+}
+
+/* Genre styling */
+.movie-genre, .movie-release-year, .movie-description, .movie-released, .movie-rating, .movie-seasons {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    font-family: "Qwitcher Grypen", cursive;
+    background: linear-gradient(to right, #ff0000, #ff4d4d, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  font-style: normal;
+}
+    
+/* Styles for the genre list */
+.genre-list, .actors-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Styles for each genre item */
+.genre-item, .actor-item {
+    background-color: #444;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.genre-item:hover, .actor-item:hover {
+    background-color: #666;
+}
+
+/* Styles for the seasons container */
+.seasons-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #444;
+    overflow-y: auto;
+    max-height: 160px;
+    width: auto;
+    overflow-x: hidden;
+    
+}
+.seasons-container::-webkit-scrollbar{
+    display: none;
+}
+/* Styles for each season item */
+.season-item {
+    background-color: #555;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: "Caveat", cursive;
+}
+
+.season-item:hover {
+    background-color: #666;
+    transform: scale(0.95);
+    color: #ec1010;
+}
+
+/* Additional styling for error messages */
+.error-message {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}

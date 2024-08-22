@@ -31,7 +31,7 @@ function toggleBookmark(element) {
 const saveMovie = () => {
     const search = document.getElementById("search").value;
     localStorage.setItem('movie-search', search);
-    window.location.href = 'search.html';
+    window.location.href = '../search.html';
 }
 document.getElementById("search").addEventListener('keydown',function (event){
     if(event.key=== 'Enter'){
@@ -39,11 +39,11 @@ document.getElementById("search").addEventListener('keydown',function (event){
     }
 })
 const hreftoIndex = () => {
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 }
 
 const hreftoSignup = () => {
-    window.location.href = 'signup/signup.html';
+    window.location.href = '../signup/signup.html';
 }
 
 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentUser || currentUser.length === 0) {
             user.innerHTML = `
                 <h3>User name</h3>
-                <img src="user.png" alt="Default Avatar">
+                <img src="../user.png" alt="Default Avatar">
             `;
         } else {
             // Giả sử `currentUser` là đối tượng người dùng, không phải mảng
@@ -148,20 +148,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentUser = JSON.parse(localStorage.getItem('CurrentUser')); // Lấy `currentUser` từ localStorage
     
         if (!currentUser || Object.keys(currentUser).length === 0) {
-            window.location.href = "chxcotk.html";
+            window.location.href = "../chxcotk.html";
         } else {
-            window.location.href = "save.html";
+            window.location.href = "../save.html";
         }
     };
     function saveMovieTitle(event) {
         const movieTitle = event.currentTarget.querySelector('.name-movie').textContent.replace('Tên phim: ', '');
         localStorage.setItem('selectedMovie', movieTitle);
         console.log(`Phim đã chọn: ${movieTitle}`);
+        window.location.href = '../movie/phim.html';
     }
+    
+    // Hàm đính kèm sự kiện cho các phần tử phim
     function attachEventListeners(container) {
         const phims = container.querySelectorAll('.phim');
         phims.forEach(phim => {
             phim.addEventListener('click', saveMovieTitle);
         });
     }
-   
+    
