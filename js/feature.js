@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const a = document.createElement('a');
             a.href = '#';
             a.textContent = genre;
-            a.onclick = (event) => {
+            a.onclick =(event) => {
                 event.preventDefault();
                 localStorage.setItem('genresMovies', genre);
-                window.location.href = 'genres.html';
+                window.location.href = '../genres.html';
             };
             genreList.appendChild(a);
         });

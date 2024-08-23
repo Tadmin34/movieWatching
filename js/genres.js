@@ -118,6 +118,7 @@ async function displayMovies() {
                     <div class="phim">
                         <i class="fa${isSaved ? '-solid' : '-regular'} fa-bookmark" 
                            onclick="toggleBookmark(this, '${data.Title}')"
+                           data-movie-title="${data.Title}"
                            style="background-color: ${isSaved ? '#fff' : '#ffcc00'}; color: ${isSaved ? '#ffcc00' : '#fff'};">
                         </i>
                         <img src="${data.Poster}" alt="${data.Title} Poster">
@@ -135,6 +136,9 @@ async function displayMovies() {
 
     // Cập nhật DOM sau khi tất cả phim đã được xử lý
     movieContainer.innerHTML += moviesHTML;
+
+    // Đính kèm sự kiện cho các phần tử phim mới được tạo
+    attachEventListeners(movieContainer);
 
     // Ẩn thanh loading
     document.getElementById('loadingScreen').style.display = 'none';
@@ -159,5 +163,7 @@ document.getElementById('more').addEventListener('click', () => {
     displayMovies(); // Tải thêm phim
 });
 
-// Gọi hàm để tải phim khi trang được tải
-Moviesgenres();
+// Đảm bảo rằng hàm từ tệp JavaScript khác đã được nạp
+document.addEventListener('DOMContentLoaded', async function () {
+    Moviesgenres();
+});

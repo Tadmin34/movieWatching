@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const phimCurrent = localStorage.getItem('selectedMovie');
-   
-
+    
     if (!phimCurrent) {
         document.getElementById('phim').innerHTML = '<p class="error-message">Không có phim nào được chọn.</p>';
         return;
@@ -17,6 +16,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         const data = await response.json();
 
         if (data.Response === 'True') {
+            const translatedPlot = await translateText(data.Plot); // Translate plot
+            
             document.getElementById('phim').innerHTML = `
                 <h2 class="section-title">Thông Tin Phim</h2>
                 <div class="movie-details">
@@ -25,13 +26,13 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <h1 class="movie-title">${data.Title}</h1>
                         <p class="movie-genre">Thể loại: ${data.Genre}</p>
                         <p class="movie-release-year">Năm phát hành: ${data.Year}</p>
-                        <p class="movie-description">${data.Plot}</p>
+                        <p class="movie-description">${translatedPlot}</p>
                         <p class="movie-released">Phát hành vào: ${data.Released}</p>
                         <p class="movie-rating">Điểm số: ${data.Ratings[0] ? data.Ratings[0].Value : 'N/A'}</p>
-                        <p class="movie-seasons">Mùa phát hành: ${data.totalSeasons}</p>
+                        <p class="movie-seasons">Mùa phát hành: ${data.totalSeasons ? data.totalSeasons : 'N/A'}</p>
                         <div id="Genre-container">
                             <h3>Thể loại:</h3>
-                            <ul class="genre-list">${data.Genre.split(', ').map(genre => `<li class="genre-item">${genre}</li>`).join('')}</ul>
+                            <ul class="genre-list">${data.Genre.split(', ').map(genre => `<li class="genre-item" onclick="generSave('${genre}')">${genre}</li>`).join('')}</ul>
                         </div>
                         <div id="actors-container">
                             <h3>Diễn viên:</h3>
@@ -54,3 +55,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('phim').innerHTML = '<p class="error-message">Đã xảy ra lỗi khi tải thông tin phim.</p>';
     }
 });
+
+const generSave = (genre) => {
+    localStorage.setItem('genresMovies', genre);
+    window.location.href = '../genres.html';
+}
