@@ -1,10 +1,12 @@
 function scrollLeft(containerId) {
     const container = document.getElementById(containerId);
     container.scrollBy({
-        left: -300,
+        left: -300,  // Cuộn sang trái
         behavior: 'smooth'
     });
 }
+
+
 
 function scrollRight(containerId) {
     const container = document.getElementById(containerId);
@@ -133,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.onclick = (event) => {
                 event.preventDefault();
                 localStorage.setItem('yearsMovies', year);
-                window.location.href = 'year.html';
+                window.location.href = '../year.html';
             };
             a.textContent = year;
             yearList.appendChild(a);

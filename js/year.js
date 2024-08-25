@@ -1,12 +1,11 @@
 const yearsMovies = localStorage.getItem('yearsMovies') || '';
-const limit = 20; // Giới hạn số lượng phim hiển thị mỗi lần
-let currentOffset = 0; // Biến theo dõi số lượng phim đã hiển thị
-let totalMovies = []; // Mảng lưu trữ tất cả các phim dựa trên năm
+const limit = 20;
+let currentOffset = 0;
+let totalMovies = [];
 
 document.getElementById('ketqua').innerText = `Phim của năm: "${yearsMovies}"`;
 
 async function MoviesByYear() {
-    // Xóa nội dung cũ trước khi tải lại
     document.getElementById('movie').innerHTML = '';
 
     let movies = [];
@@ -94,13 +93,12 @@ async function MoviesByYear() {
             return;
     }
 
-    totalMovies = movies; // Lưu trữ tất cả các phim của năm
-    currentOffset = 0; // Reset phạm vi hiển thị
-    displayMovies(); // Hiển thị phim đầu tiên
+    totalMovies = movies;
+    currentOffset = 0;
+    displayMovies();
 }
 
 async function displayMovies() {
-    // Hiển thị thanh loading
     document.getElementById('loadingScreen').style.display = 'flex';
 
     const moviesToDisplay = totalMovies.slice(currentOffset, currentOffset + limit);
@@ -108,8 +106,8 @@ async function displayMovies() {
 
     let moviesHTML = '';
 
-    try {
-        for (const movie of moviesToDisplay) {
+    for (const movie of moviesToDisplay) {
+        try {
             const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${apiKey}`);
             if (!response.ok) {
                 throw new Error('Không thể tìm thấy phim');
@@ -121,6 +119,7 @@ async function displayMovies() {
                     <div class="phim">
                         <i class="fa${isSaved ? '-solid' : '-regular'} fa-bookmark" 
                            onclick="toggleBookmark(this, '${data.Title}')"
+                           data-movie-title="${data.Title}"
                            style="background-color: ${isSaved ? '#fff' : '#ffcc00'}; color: ${isSaved ? '#ffcc00' : '#fff'};">
                         </i>
                         <img src="${data.Poster}" alt="${data.Title} Poster">
@@ -131,37 +130,34 @@ async function displayMovies() {
             } else {
                 console.error(`Phim "${movie}" không tìm thấy`);
             }
+        } catch (err) {
+            console.error(err.message);
         }
+    }
 
-        // Cập nhật DOM sau khi tất cả phim đã được xử lý
-        movieContainer.innerHTML += moviesHTML;
+    movieContainer.innerHTML += moviesHTML;
 
-    } catch (err) {
-        console.error(err.message);
-    } finally {
-        // Ẩn thanh loading
-        document.getElementById('loadingScreen').style.display = 'none';
+    attachEventListeners(movieContainer);
 
-        // Cập nhật trạng thái của nút "More"
-        if (currentOffset + limit < totalMovies.length) {
-            document.getElementById('more').style.display = 'block'; // Hiển thị nút "More"
-        } else {
-            document.getElementById('more').style.display = 'none'; // Ẩn nút "More"
-        }
+    document.getElementById('loadingScreen').style.display = 'none';
+
+    if (currentOffset + limit < totalMovies.length) {
+        document.getElementById('more').style.display = 'block';
+    } else {
+        document.getElementById('more').style.display = 'none';
     }
 }
 
-// Hàm kiểm tra nếu phim đã được lưu
 function isMovieSaved(movieName) {
     const currentUser = JSON.parse(localStorage.getItem('CurrentUser'));
     return currentUser && currentUser.savedMovies && currentUser.savedMovies.includes(movieName);
 }
 
-// Hàm xử lý sự kiện cho nút "More"
 document.getElementById('more').addEventListener('click', () => {
-    currentOffset += limit; // Cập nhật phạm vi hiện tại
-    displayMovies(); // Tải thêm phim
+    currentOffset += limit;
+    displayMovies();
 });
 
-// Gọi hàm để tải phim khi trang được tải
-MoviesByYear();
+document.addEventListener('DOMContentLoaded', async function () {
+    MoviesByYear();
+});

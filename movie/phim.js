@@ -18,10 +18,23 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (data.Response === 'True') {
             const translatedPlot = await translateText(data.Plot); // Translate plot
             
+            // Tìm trailer của phim trên YouTube
+            const trailerUrl = await getYouTubeTrailer(data.Title);
+
             document.getElementById('phim').innerHTML = `
                 <h2 class="section-title">Thông Tin Phim</h2>
                 <div class="movie-details">
-                    <img src="${data.Poster}" alt="${data.Title} Poster" class="movie-poster">
+                    <div class="movie-poster-container">
+                        <img src="${data.Poster}" alt="${data.Title} Poster" class="movie-poster">
+                        <a href="#" class="glightbox_video" onclick="openVideoModal('${trailerUrl}'); return false;"> 
+                            <svg width="131" height="131" viewBox="0 0 131 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="inner-circle" d="M65 21C40.1488 21 20 41.1488 20 66C20 90.8512 40.1488 111 65 111C89.8512 111 110 90.8512 110 66C110 41.1488 89.8512 21 65 21Z" fill="white"></path>
+                                <circle class="outer_circle" cx="65.5" cy="65.5" r="64" stroke="white"></circle>
+                                <path class="play" fill-rule="evenodd" clip-rule="evenodd" d="M60 76V57L77 66.7774L60 76Z" fill="#BF2428"></path>
+                            </svg>
+                        </a>
+                    </div>
+
                     <div class="movie-info">
                         <h1 class="movie-title">${data.Title}</h1>
                         <p class="movie-genre">Thể loại: ${data.Genre}</p>
@@ -60,3 +73,49 @@ const generSave = (genre) => {
     localStorage.setItem('genresMovies', genre);
     window.location.href = '../genres.html';
 }
+
+// Hàm tìm kiếm trailer trên YouTube
+async function getYouTubeTrailer(movieTitle) {
+    const youtubeApiKey = 'AIzaSyBFjjSJ6pY0pIBtSxGOWJhT6QJrJ6GIqEY';
+    const query = `${movieTitle} trailer`;
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&key=${youtubeApiKey}&maxResults=1&type=video`);
+    
+    if (!response.ok) {
+        console.error('Không thể tìm thấy trailer trên YouTube');
+        return '#';
+    }
+
+    const data = await response.json();
+
+    if (data.items && data.items.length > 0) {
+        const videoId = data.items[0].id.videoId;
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1`; // Thêm tham số autoplay=1
+    }
+
+    return '#'; // Nếu không tìm thấy video, trả về #
+}
+
+function openVideoModal(trailerUrl) {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('trailerVideo');
+
+    iframe.src = trailerUrl;
+    modal.style.display = 'block';
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('trailerVideo');
+
+    iframe.src = ''; // Dừng video khi đóng modal
+    modal.style.display = 'none';
+}
+
+// Gán sự kiện đóng modal khi nhấn vào nút đóng hoặc bên ngoài video
+document.querySelector('.close-btn').addEventListener('click', closeVideoModal);
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('videoModal');
+    if (event.target == modal) {
+        closeVideoModal();
+    }
+});
