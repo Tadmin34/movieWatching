@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const data = await response.json();
+        const translatedPlot = await translatePlot(data.Plot);
 
         if (data.Response === 'True') {
-            const translatedPlot = await translateText(data.Plot); // Translate plot
+       
             
             // Tìm trailer của phim trên YouTube
             const trailerUrl = await getYouTubeTrailer(data.Title);
@@ -41,7 +42,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <p class="movie-release-year">Năm phát hành: ${data.Year}</p>
                         <p class="movie-description">${translatedPlot}</p>
                         <p class="movie-released">Phát hành vào: ${data.Released}</p>
-                        <p class="movie-rating">Điểm số: ${data.Ratings[0] ? data.Ratings[0].Value : 'N/A'}</p>
+                        <p class="movie-rating">Điểm số: ${data.Ratings[0] ? data.Ratings[0].Value : 'N/A'}        
+                                                               
+                        </p>
+                        <p class='movie-runtime'>Thời lượng :${data.Runtime}</p>
                         <p class="movie-seasons">Mùa phát hành: ${data.totalSeasons ? data.totalSeasons : 'N/A'}</p>
                         <div id="Genre-container">
                             <h3>Thể loại:</h3>
@@ -73,6 +77,20 @@ const generSave = (genre) => {
     localStorage.setItem('genresMovies', genre);
     window.location.href = '../genres.html';
 }
+async function translatePlot(plot) {
+    try {
+        const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(plot)}&langpair=en|vi`);
+        if (!response.ok) {
+            throw new Error('Translation API request failed');
+        }
+        const data = await response.json();
+        return data.responseData.translatedText;
+    } catch (error) {
+        console.error('Translation error:', error);
+        return 'Translation not available';
+    }
+}
+
 
 // Hàm tìm kiếm trailer trên YouTube
 async function getYouTubeTrailer(movieTitle) {

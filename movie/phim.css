@@ -22,9 +22,11 @@
 /* Styles for the movie info section */
 .movie-info {
     flex: 1;
-    color: #ec1010;
+    
 }
-
+ .movie-info h3{
+    color: goldenrod;
+}
 /* Title styling */
 .movie-title {
     font-size: 2.5rem;
@@ -35,7 +37,7 @@
 }
 
 /* Genre styling */
-.movie-genre, .movie-release-year, .movie-description, .movie-released, .movie-rating, .movie-seasons {
+.movie-genre, .movie-release-year, .movie-description, .movie-released, .movie-rating, .movie-seasons, .movie-runtime {
     font-size: 1.2rem;
     margin: 10px 0;
     font-family: "Qwitcher Grypen", cursive;

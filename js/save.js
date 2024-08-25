@@ -43,7 +43,7 @@ function isMovieSaved(movieName) {
     const currentUser = JSON.parse(localStorage.getItem('CurrentUser'));
     return currentUser && currentUser.savedMovies && currentUser.savedMovies.includes(movieName);
 }
-
+attachEventListeners(movieContainer)
 // Gọi hàm để hiển thị các phim đã lưu khi trang được tải
 window.addEventListener('load', () => {
     displaySavedMovies();

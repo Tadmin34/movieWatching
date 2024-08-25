@@ -5,7 +5,7 @@ function scrollLeft(containerId) {
         behavior: 'smooth'
     });
 }
-
+document.getElementById('btn1').addEventListener('click',scrollLeft('Phim-noi-bat'))
 
 
 function scrollRight(containerId) {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function attachEventListeners(container) {
         const phims = container.querySelectorAll('.phim');
         phims.forEach(phim => {
-            phim.addEventListener('', saveMovieTitle);
+            phim.addEventListener('dblclick', saveMovieTitle);
         });
     }
     
