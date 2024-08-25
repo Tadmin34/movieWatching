@@ -7,6 +7,8 @@ async function displaySavedMovies() {
     }
 
     const savedMovies = currentUser.savedMovies;
+    const movieContainer = document.getElementById('movie');
+    movieContainer.innerHTML = ''; // Xóa nội dung cũ
 
     for (const movie of savedMovies) {
         try {
@@ -16,13 +18,11 @@ async function displaySavedMovies() {
             }
             const data = await response.json();
             if (data.Response === 'True') {
-                
-                const isSaved = isMovieSaved(data.Title);
-                document.getElementById('movie').innerHTML += `
+                movieContainer.innerHTML += `
                     <div class="phim">
-                        <i class="fa${isSaved ? '-solid' : '-regular'} fa-bookmark" 
+                        <i class="fa${isMovieSaved(data.Title) ? '-solid' : '-regular'} fa-bookmark" 
                            onclick="toggleBookmark(this, '${data.Title}')"
-                           style="background-color: ${isSaved ? '#fff' : '#ffcc00'}; color: ${isSaved ? '#ffcc00' : '#fff'};">
+                           style="background-color: ${isMovieSaved(data.Title) ? '#fff' : '#ffcc00'}; color: ${isMovieSaved(data.Title) ? '#ffcc00' : '#fff'};">
                         </i>
                         <img src="${data.Poster}" alt="${data.Title} Poster">
                         <h4 class="name-movie">Tên phim: ${data.Title}</h4>
@@ -35,9 +35,6 @@ async function displaySavedMovies() {
         } catch (err) {
             console.error(err.message);
         }
-        finally{
-            loadingScreen.style.display = 'none';
-        }
     }
 }
 
@@ -47,10 +44,7 @@ function isMovieSaved(movieName) {
     return currentUser && currentUser.savedMovies && currentUser.savedMovies.includes(movieName);
 }
 
-// Gọi hàm để hiển thị phim đã lưu khi trang được tả
+// Gọi hàm để hiển thị các phim đã lưu khi trang được tải
 window.addEventListener('load', () => {
-    loadingScreen.style.display = 'flex';
-    
-    // Gọi hàm để hiển thị thông tin phim
     displaySavedMovies();
 });

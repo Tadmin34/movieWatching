@@ -5,6 +5,7 @@ const anime = document.getElementById("Anime-container");
 const loadingScreen = document.getElementById('loadingScreen');
 
 async function fetchAndDisplayMovies(movieList, container) {
+    container.innerHTML = ''; // Clear the container before adding new movies
     for (const movie of movieList) {
         try {
             const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${apiKey}`);
@@ -32,10 +33,9 @@ async function fetchAndDisplayMovies(movieList, container) {
         } catch (err) {
             console.error(err.message);
         }
-        attachEventListeners(container)        
     }
+    attachEventListeners(container);
 }
-
 // Hàm kiểm tra nếu phim đã được lưu
 function isMovieSaved(movieName) {
     const currentUser = JSON.parse(localStorage.getItem('CurrentUser'));

@@ -16,18 +16,41 @@ function scrollRight(containerId) {
     });
 }
 
-function toggleBookmark(element) {
-    if (element.classList.contains('fa-regular')) {
-        element.classList.remove('fa-regular');
-        element.classList.add('fa-solid');
-        element.style.backgroundColor = '#fff';
-        element.style.color = '#ffcc00';
-    } else {
+function toggleBookmark(element, movieName) {
+    let currentUser = JSON.parse(localStorage.getItem('CurrentUser'));
+
+    if (!currentUser) {
+        console.error('Không có người dùng đăng nhập');
+        return;
+    }
+
+    if (!currentUser.savedMovies) {
+        currentUser.savedMovies = [];
+    }
+
+    const isSaved = currentUser.savedMovies.includes(movieName);
+
+    if (isSaved) {
+        const index = currentUser.savedMovies.indexOf(movieName);
+        if (index > -1) {
+            currentUser.savedMovies.splice(index, 1);
+        }
+        // Update bookmark icon
         element.classList.remove('fa-solid');
         element.classList.add('fa-regular');
         element.style.backgroundColor = '#ffcc00';
         element.style.color = '#fff';
+    } else {
+        currentUser.savedMovies.push(movieName);
+        // Update bookmark icon
+        element.classList.remove('fa-regular');
+        element.classList.add('fa-solid');
+        element.style.backgroundColor = '#fff';
+        element.style.color = '#ffcc00';
     }
+
+    // Save updated user data back to localStorage
+    localStorage.setItem('CurrentUser', JSON.stringify(currentUser));
 }
 
 const saveMovie = () => {
@@ -166,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function attachEventListeners(container) {
         const phims = container.querySelectorAll('.phim');
         phims.forEach(phim => {
-            phim.addEventListener('click', saveMovieTitle);
+            phim.addEventListener('', saveMovieTitle);
         });
     }
     

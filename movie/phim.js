@@ -92,7 +92,7 @@ async function getYouTubeTrailer(movieTitle) {
         return `https://www.youtube.com/embed/${videoId}?autoplay=1`; // Thêm tham số autoplay=1
     }
 
-    return '#'; // Nếu không tìm thấy video, trả về #
+    return 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';; // Nếu không tìm thấy video, trả về #
 }
 
 function openVideoModal(trailerUrl) {

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../signup&login.css">
 </head>
 <body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="../SnapTik.ltd_1724579009.mp3" type="audio/mpeg" />
+      </audio>
     <div class="container">
         <h1>Đăng Ký</h1>
         <form action="#" method="post" id="form" enctype="multipart/form-data">
@@ -44,16 +47,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="signup.js"></script>
-    <script>
-        function onClick(e) {
-          e.preventDefault();
-          grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LcHZCwqAAAAALspS62XAHnlG6O9YZh_qgOewHyi', {action: 'LOGIN'});
-          });
-        }
-      </script>
-      <head>
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcHZCwqAAAAALspS62XAHnlG6O9YZh_qgOewHyi"></script>
-        
+   
 </body>
 </html>

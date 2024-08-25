@@ -115,3 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cropper.destroy();
     });
 });
+window.onload = function () {
+    document.getElementById("backgroundMusic").play();
+  };

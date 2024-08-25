@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+   
     const form = document.querySelector('form');
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
@@ -69,3 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+window.onload = function () {
+    document.getElementById("backgroundMusic").play();
+  };
