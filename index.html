@@ -40,19 +40,37 @@
     </header>
 
     
-    <!-- <div class="side-nav" id="sideNav">
+    <div class="side-nav" id="sideNav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="side-search">
-            <input type="search" id="sideSearch" class="search" placeholder="Tìm kiếm..."><i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="sideSearch" class="search" placeholder="Tìm kiếm...">
+            <i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="user" id="sideUser" onclick="hreftoSignup()">Username</div>
+        <div class="side-user" id="user2" onclick="hreftoSignup()">
+           
+        </div>
         <a href="#" onclick="checkAcc(event)">Phim đã lưu</a>
         <a href="#">Phim mới</a>
         <a href="#">Phim lẻ</a>
         <a href="#">Phim bộ</a>
-        <a href="#" id="sideShowGenres">Thể loại</a>
-        <a href="#" id="sideShowYears">Năm phát hành</a>
-    </div> -->
+        <details id="sideShowGenres">
+            <summary>Thể loại</summary>
+           
+            <div class="dropdown-content" id="genresDropdown">
+                <!-- Genre links will be inserted here by JavaScript -->
+
+            </div>
+        </details>
+        
+        <details id="sideShowYears">
+            <summary>Năm phát hành</summary>
+            <div class="dropdown-content" id="yearsDropdown">
+                <!-- Year links will be inserted here by JavaScript -->
+            </div>
+        </details>
+    </div>
+    
+    
     
     <div class="container">
         <h2 class="section-title">Nổi bật</h2>

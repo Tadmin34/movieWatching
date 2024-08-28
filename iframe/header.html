@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="vn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết quả tìm kiếm</title>
-    <link rel="stylesheet" href="movie.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="Blue and Pink Aesthetic Film Company Logo.png" />
-    <script src="https://kit.fontawesome.com/98638255fc.js" crossorigin="anonymous"></script>
+    <title>Header</title>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Liên kết đến FontAwesome nếu bạn dùng -->
+
 </head>
 <body>
     <header>
         <img onclick="hreftoIndex()" src="Blue and Pink Aesthetic Film Company Logo.png" alt="">
         <nav id="mainNav">
             <a href="#" onclick="checkAcc(event)">Phim đã lưu</a>
-            <a href="">Phim mới</a>
-            <a href="">Phim lẻ</a>
-            <a href="">Phim bộ</a>
+            <a href="#">Phim mới</a>
+            <a href="#">Phim lẻ</a>
+            <a href="#">Phim bộ</a>
             <a href="#" id="showGenres">Thể loại</a>
             <a href="#" id="showYears">Năm phát hành</a>
         </nav>
         <div class="search">
             <input type="search" id="search" placeholder="Tìm kiếm..."><i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="user" id="user" onclick="hreftoSignup()">
-            
-        </div>
+        <div class="user" id="user" onclick="hreftoSignup()">Username</div>
         
         <svg xmlns="http://www.w3.org/2000/svg" class="Ham-bars" height="44px" viewBox="0 -960 960 960" width="44px" fill="#e8eaed" onclick="toggleNav()">
             <path class="bars" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
@@ -33,18 +30,5 @@
         <div id="genreList" class="dropdown-content"></div>
         <div id="yearList" class="dropdown-content"></div>
     </header>
-    <div id="loadingScreen">
-        <div class="loader"></div>
-        <p>Đang tải phim...</p>
-    </div>
-    <div class="genres-container">
-        <h2 id="ketqua"></h2>
-        <div class="movie" id="movie"></div>
-    </div>
-    <button id="more">More</button>
-
-    <script src="js/data.js"></script>
-    <script src="js/feature.js"></script>
-    <script src="js/year.js"></script>
 </body>
 </html>

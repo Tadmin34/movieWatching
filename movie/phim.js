@@ -95,7 +95,7 @@ async function translatePlot(plot) {
 // Hàm tìm kiếm trailer trên YouTube
 async function getYouTubeTrailer(movieTitle) {
     const youtubeApiKey = 'AIzaSyBFjjSJ6pY0pIBtSxGOWJhT6QJrJ6GIqEY';
-    const query = `${movieTitle} trailer`;
+    const query = `${movieTitle} trailer vietsub`;
     const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&key=${youtubeApiKey}&maxResults=1&type=video`);
     
     if (!response.ok) {
@@ -125,7 +125,7 @@ function closeVideoModal() {
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('trailerVideo');
 
-    iframe.src = ''; // Dừng video khi đóng modal
+    iframe.src = ''; 
     modal.style.display = 'none';
 }
 

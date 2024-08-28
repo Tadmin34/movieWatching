@@ -77,16 +77,26 @@ const hreftoSignup = () => {
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = JSON.parse(localStorage.getItem('CurrentUser'));
     const user = document.getElementById('user');
-    
+    const user2 = document.getElementById('user2');
+
     const userDisplay = () => {
-        if (!currentUser || currentUser.length === 0) {
+        if (!currentUser || Object.keys(currentUser).length === 0) {
+            // Default display when no user is logged in
             user.innerHTML = `
                 <h3>User name</h3>
                 <img src="../user.png" alt="Default Avatar">
             `;
+            user2.innerHTML = `
+                <h3>User name</h3>
+                <img src="../user.png" alt="Default Avatar">
+            `;
         } else {
-            // Giả sử `currentUser` là đối tượng người dùng, không phải mảng
+            // Display user information if logged in
             user.innerHTML = `
+                <h3>${currentUser.username}</h3>
+                <img src="${currentUser.avatar}" alt="User Avatar">
+            `;
+            user2.innerHTML = `
                 <h3>${currentUser.username}</h3>
                 <img src="${currentUser.avatar}" alt="User Avatar">
             `;
@@ -95,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     userDisplay();
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const showGenres = document.getElementById('showGenres');
@@ -192,4 +203,73 @@ document.addEventListener('DOMContentLoaded', () => {
             phim.addEventListener('dblclick', saveMovieTitle);
         });
     }
+
+// reponsive
+
+const populateDropdowns = () => {
+    const genres = [
+        "Action", "Adventure", "Animation", "Anime", "Biography",
+        "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy",
+        "Film-Noir", "History", "Horror", "Music", "Musical", "Mystery",
+        "Romance", "Sci-Fi", "Short", "Sport", "Thriller", "War", "Western"
+    ];
     
+    const years = Array.from({length: 2024 - 1999 + 1}, (_, i) => i + 1999);
+
+    const sideGenresDropdown = document.getElementById('genresDropdown');
+    const sideYearsDropdown = document.getElementById('yearsDropdown');
+
+    genres.forEach(genre => {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.textContent = genre;
+        link.onclick = (event) => {
+            event.preventDefault();
+            localStorage.setItem('genresMovies', genre);
+            window.location.href = '../genres.html';
+        };
+        sideGenresDropdown.appendChild(link);
+    });
+
+    years.forEach(year => {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.textContent = year;
+        link.onclick = (event) => {
+            event.preventDefault();
+            localStorage.setItem('yearsMovies', year);
+            window.location.href = '../year.html';
+        };
+        sideYearsDropdown.appendChild(link);
+    });
+};
+
+populateDropdowns();
+
+// Toggle side navigation
+function toggleNav() {
+    const sideNav = document.getElementById("sideNav");
+    sideNav.style.width = sideNav.style.width === "250px" ? "0" : "250px";
+}
+
+function closeNav() {
+    document.getElementById("sideNav").style.width = "0";
+}
+
+// Event listeners for navigation
+document.getElementById('showGenres').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleDropdown('genreList', this);
+});
+
+document.getElementById('showYears').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleDropdown('yearList', this);
+});
+
+function toggleDropdown(dropdownId, triggerElement) {
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    dropdown.style.left = triggerElement.getBoundingClientRect().left + 'px';
+    dropdown.style.top = triggerElement.getBoundingClientRect().bottom + 'px';
+}

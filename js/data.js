@@ -793,5 +793,24 @@ const actionMovies = [
     "The Battle of the Bulge"
 ];
 
+const thrillerMovies = [
+  "Se7en", "Fight Club", "The Silence of the Lambs", "Gone Girl", "Zodiac",
+  "The Sixth Sense", "Inception", "Shutter Island", "Psycho", "Memento",
+  "The Girl with the Dragon Tattoo", "Black Swan", "Prisoners", "The Prestige",
+  "Mulholland Drive", "Nightcrawler", "American Psycho", "Cape Fear",
+  "No Country for Old Men", "The Others", "Oldboy", "Heat", "The Usual Suspects",
+  "The Machinist", "Drive", "A Beautiful Mind", "Mystic River", "The Departed",
+  "The Dark Knight", "The Game", "The Village", "Taxi Driver", "Argo",
+  "The Bone Collector", "The Talented Mr. Ripley", "Training Day", "V for Vendetta",
+  "Insomnia", "Manhunter", "The Conversation", "Blue Velvet", "The Vanishing",
+  "Body Heat", "Fatal Attraction", "Unbreakable", "Donnie Darko", "Enemy",
+  "Misery", "Chinatown", "Heat", "Sin City", "The Fugitive", "The Killing",
+  "A History of Violence", "Jacob's Ladder", "L.A. Confidential", "Gone Baby Gone",
+  "Minority Report", "Eastern Promises", "The Insider", "Before I Go to Sleep",
+  "Man on Fire", "The Butterfly Effect", "Gothika", "Eyes Wide Shut", "The Manchurian Candidate",
+  "The Hitcher", "Death Proof", "The Ghost Writer", "The Bourne Identity",
+  "The Bourne Supremacy", "The Bourne Ultimatum", "Collateral", "The Girl on the Train",
+  "The Purge", "A Simple Favor", "The Purge: Anarchy", "Bird Box", "You Were Never Really Here"
+];
   
 const apiKey = '44cedb5f';
