@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             document.getElementById('phim').innerHTML = `
                 <h2 class="section-title">Thông Tin Phim</h2>
+                
                 <div class="movie-details">
                     <div class="movie-poster-container">
                         <img src="${data.Poster}" alt="${data.Title} Poster" class="movie-poster">
@@ -56,13 +57,14 @@ document.addEventListener('DOMContentLoaded', async function () {
                             <ul class="actors-list">${data.Actors.split(', ').map(actor => `<li class="actor-item">${actor}</li>`).join('')}</ul>
                         </div>
                         ${data.totalSeasons && data.totalSeasons > 0 ? `
+                            <h3>Các mùa:</h3>
                             <div class="seasons-container">
-                                <h3>Các mùa:</h3>
                                 ${Array.from({ length: parseInt(data.totalSeasons, 10) }).map((_, index) => `<div class="season-item">Mùa ${index + 1}</div>`).join('')}
                             </div>
                         ` : ''}
                     </div>
                 </div>
+                
             `;
         } else {
             document.getElementById('phim').innerHTML = `<p class="error-message">Không tìm thấy phim: ${phimCurrent}</p>`;

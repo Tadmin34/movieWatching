@@ -123,6 +123,7 @@
     height: 750px;
     border-radius: 10px;
     overflow: hidden;
+    border: #ff0000 solid 0.5px;
 }
 
 
@@ -131,8 +132,8 @@
     height: 100%;
     object-fit: cover;
     transition: opacity 0.3s ease;
-    border-radius: 10px;
     border: 2px solid red;
+    border-radius: 10px;
 }
 
 /* Định vị và căn giữa nút video */
@@ -226,4 +227,27 @@
 #trailerVideo {
     width: 100%;
     height: 100%;
+}
+@media (max-width: 768px){
+    .movie-poster-container{
+        width: 80%;
+        margin: 0 10% 0 10%;
+
+    }
+    .movie-details{
+        display: flex;
+        flex-direction: column;
+    }
+    .movie-genre, .movie-release-year, .movie-description, .movie-released, .movie-rating, .movie-seasons, .movie-runtime {
+    font-size: 30px;
+    
+    }
+    .genre-item,.season-item ,.actor-item{
+        font-size: 25px;
+        
+    }
+    h3{
+        font-size: 28px;
+    }
+
 }

@@ -5,7 +5,7 @@ function scrollLeft(containerId) {
         behavior: 'smooth'
     });
 }
-document.getElementById('btn1').addEventListener('click',scrollLeft('Phim-noi-bat'))
+// document.getElementById('btn1').addEventListener('click',scrollLeft('Phim-noi-bat'))
 
 
 function scrollRight(containerId) {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('genresMovies', genre);
                 window.location.href = '../genres.html';
             };
-            genreList.appendChild(a);
+            genreList.endChappild(a);
         });
         genreList.style.display = 'flex';
         yearList.style.display = 'none';
@@ -273,3 +273,4 @@ function toggleDropdown(dropdownId, triggerElement) {
     dropdown.style.left = triggerElement.getBoundingClientRect().left + 'px';
     dropdown.style.top = triggerElement.getBoundingClientRect().bottom + 'px';
 }
+console.log('file đã đc tải')

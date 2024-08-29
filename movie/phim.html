@@ -33,6 +33,41 @@
         <div id="genreList" class="dropdown-content"></div>
         <div id="yearList" class="dropdown-content"></div>
     </header>
+
+
+
+       
+    <div class="side-nav" id="sideNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="side-search">
+            <input type="search" id="sideSearch" class="search" placeholder="Tìm kiếm...">
+            <i onclick="saveMovie()" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="side-user" id="user2" onclick="hreftoSignup()">
+           
+        </div>
+        <a href="#" onclick="checkAcc(event)">Phim đã lưu</a>
+        <a href="#">Phim mới</a>
+        <a href="#">Phim lẻ</a>
+        <a href="#">Phim bộ</a>
+        <details id="sideShowGenres">
+            <summary>Thể loại</summary>
+           
+            <div class="dropdown-content" id="genresDropdown">
+                <!-- Genre links will be inserted here by JavaScript -->
+
+            </div>
+        </details>
+        
+        <details id="sideShowYears">
+            <summary>Năm phát hành</summary>
+            <div class="dropdown-content" id="yearsDropdown">
+                <!-- Year links will be inserted here by JavaScript -->
+            </div>
+        </details>
+    </div>
+    
+    
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
             <span class="close-btn">&times;</span>
@@ -77,10 +112,10 @@
         <h2>@PhimV</h2>
     </footer>
     <script src="../js/data.js"></script>
-    <script src="phim.js"></script>
-    <!-- <script src="tranlattion.js"></script> -->
     <script src="../js/feature.js"></script>
    
+    <script src="phim.js"></script>
+    <!-- <script src="tranlattion.js"></script> -->
         
         
 </body>
