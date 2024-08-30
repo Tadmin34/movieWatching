@@ -47,3 +47,12 @@ button:hover {
 button:active {
     transform: translateX(-50%) scale(0.98);
 }
+@media (max-width:768px){
+    #movie{
+        display: flex;
+        justify-content: center;
+    }
+    #movie .phim{
+        margin: 20px;
+    }
+}

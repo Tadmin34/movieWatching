@@ -84,7 +84,15 @@ header input[type="search"] {
     cursor: pointer; 
     transition: background-color 0.3s; 
 }
-
+.side-search i{
+    background-color: #555;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 0 4px 4px 0; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
 .search i:hover {
     background-color: #ffcc00; 
     color: #333;
@@ -591,7 +599,92 @@ scrollbar-thumb:hover {
     color: #fff;
     flex-direction: column;
 }
+@media (max-width: 1024px) {
+    /* Responsive adjustments for movie containers */
+    .PhimNoibat-container, .phimoi_container, .Phimle-container, .Anime-container {
+        padding: 10px;
+        margin: 5px;
+    }
 
+    /* Responsive adjustments for movie elements */
+    .phim {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+
+    .phim img {
+        height: auto;
+    }
+
+    /* Responsive adjustments for movie titles */
+    .movie-title {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Responsive adjustments for movie genres and seasons */
+    .movie-genre, .movie-season {
+        font-size: 12px;
+    }
+
+    /* Responsive adjustments for star rating */
+    .star-rating {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    /* Responsive adjustments for play button hover effect */
+    .phim img:hover + .play-button {
+        border: 2px solid red;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .play-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Responsive adjustments for other elements */
+    #mainNav a{
+        font-size: 18px;
+        padding: 2px;
+        margin: 1px;
+    }
+    header img {
+        width: 120px;
+        height: 60px;
+    }
+ header .search{
+
+
+
+    width: 100%; 
+    max-width: 210px; 
+ }
+ .search input[type="search"] {
+
+    padding: 1px;
+    font-size: 14px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px 0 0 4px; 
+    outline: none; 
+}
+
+.search input[type="search"]::placeholder {
+    color: #888; 
+}
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigation a {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
 /* CSS for loading animation */
 .loader {
     --s: 25px;

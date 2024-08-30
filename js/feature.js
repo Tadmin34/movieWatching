@@ -5,8 +5,6 @@ function scrollLeft(containerId) {
         behavior: 'smooth'
     });
 }
-// document.getElementById('btn1').addEventListener('click',scrollLeft('Phim-noi-bat'))
-
 
 function scrollRight(containerId) {
     const container = document.getElementById(containerId);
@@ -57,22 +55,21 @@ const saveMovie = () => {
     const search = document.getElementById("search").value;
     localStorage.setItem('movie-search', search);
     window.location.href = '../search.html';
-}
-document.getElementById("search").addEventListener('keydown',function (event){
-    if(event.key=== 'Enter'){
-        saveMovie()
+};
+
+document.getElementById("search").addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        saveMovie();
     }
-})
+});
+
 const hreftoIndex = () => {
     window.location.href = '../index.html';
-}
+};
 
 const hreftoSignup = () => {
     window.location.href = '../signup/signup.html';
-}
-
-
-
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = JSON.parse(localStorage.getItem('CurrentUser'));
@@ -106,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     userDisplay();
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const showGenres = document.getElementById('showGenres');
     const showYears = document.getElementById('showYears');
@@ -117,43 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         genreList.innerHTML = '';
         const genres = [
-            "Action",
-            "Adventure",
-            "Animation",
-            "Anime",
-            "Biography",
-            "Comedy",
-            "Crime",
-            "Documentary",
-            "Drama",
-            "Family",
-            "Fantasy",
-            "Film-Noir",
-            "History",
-            "Horror",
-            "Music",
-            "Musical",
-            "Mystery",
-            "Romance",
-            "Sci-Fi",
-            "Short",
-            "Sport",
-            "Thriller",
-            "War",
-            "Western",
-            
+            "Action", "Adventure", "Animation", "Anime", "Biography",
+            "Comedy", "Crime", "Documentary", "Drama", "Family",
+            "Fantasy", "Film-Noir", "History", "Horror", "Music",
+            "Musical", "Mystery", "Romance", "Sci-Fi", "Short",
+            "Sport", "Thriller", "War", "Western"
         ];
+
         genres.forEach(genre => {
             const a = document.createElement('a');
             a.href = '#';
             a.textContent = genre;
-            a.onclick =(event) => {
+            a.onclick = (event) => {
                 event.preventDefault();
                 localStorage.setItem('genresMovies', genre);
                 window.location.href = '../genres.html';
             };
-            genreList.endChappild(a);
+            genreList.appendChild(a);
         });
+
         genreList.style.display = 'flex';
         yearList.style.display = 'none';
         genreList.style.left = showGenres.getBoundingClientRect().left + 'px';
@@ -174,37 +152,56 @@ document.addEventListener('DOMContentLoaded', () => {
             a.textContent = year;
             yearList.appendChild(a);
         }
+
         yearList.style.display = 'flex';
         genreList.style.display = 'none';
         yearList.style.left = showYears.getBoundingClientRect().left + 'px';
         yearList.style.top = showYears.getBoundingClientRect().bottom + 'px';
-    })});
-    const checkAcc = (event) => {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ anchor
-        const currentUser = JSON.parse(localStorage.getItem('CurrentUser')); // Lấy `currentUser` từ localStorage
-    
-        if (!currentUser || Object.keys(currentUser).length === 0) {
-            window.location.href = "../chxcotk.html";
-        } else {
-            window.location.href = "../save.html";
-        }
-    };
-    function saveMovieTitle(event) {
-        const movieTitle = event.currentTarget.querySelector('.name-movie').textContent.replace('Tên phim: ', '');
-        localStorage.setItem('selectedMovie', movieTitle);
-        console.log(`Phim đã chọn: ${movieTitle}`);
-        window.location.href = '../movie/phim.html';
-    }
-    
-    // Hàm đính kèm sự kiện cho các phần tử phim
-    function attachEventListeners(container) {
-        const phims = container.querySelectorAll('.phim');
-        phims.forEach(phim => {
-            phim.addEventListener('dblclick', saveMovieTitle);
-        });
-    }
+    });
 
-// reponsive
+    // Close the dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        const isClickInsideGenres = genreList.contains(e.target) || showGenres.contains(e.target);
+        const isClickInsideYears = yearList.contains(e.target) || showYears.contains(e.target);
+
+        if (!isClickInsideGenres) {
+            genreList.style.display = 'none';
+        }
+
+        if (!isClickInsideYears) {
+            yearList.style.display = 'none';
+        }
+    });
+});
+
+
+const checkAcc = (event) => {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ anchor
+    const currentUser = JSON.parse(localStorage.getItem('CurrentUser')); // Lấy `currentUser` từ localStorage
+
+    if (!currentUser || Object.keys(currentUser).length === 0) {
+        window.location.href = "../chxcotk.html";
+    } else {
+        window.location.href = "../save.html";
+    }
+};
+
+function saveMovieTitle(event) {
+    const movieTitle = event.currentTarget.querySelector('.name-movie').textContent.replace('Tên phim: ', '');
+    localStorage.setItem('selectedMovie', movieTitle);
+    console.log(`Phim đã chọn: ${movieTitle}`);
+    window.location.href = '../movie/phim.html';
+}
+
+// Hàm đính kèm sự kiện cho các phần tử phim
+function attachEventListeners(container) {
+    const phims = container.querySelectorAll('.phim');
+    phims.forEach(phim => {
+        phim.addEventListener('dblclick', saveMovieTitle);
+    });
+}
+
+// Responsive
 
 const populateDropdowns = () => {
     const genres = [
@@ -214,7 +211,7 @@ const populateDropdowns = () => {
         "Romance", "Sci-Fi", "Short", "Sport", "Thriller", "War", "Western"
     ];
     
-    const years = Array.from({length: 2024 - 1999 + 1}, (_, i) => i + 1999);
+    const years = Array.from({ length: 2024 - 1999 + 1 }, (_, i) => i + 1999);
 
     const sideGenresDropdown = document.getElementById('genresDropdown');
     const sideYearsDropdown = document.getElementById('yearsDropdown');
@@ -273,4 +270,5 @@ function toggleDropdown(dropdownId, triggerElement) {
     dropdown.style.left = triggerElement.getBoundingClientRect().left + 'px';
     dropdown.style.top = triggerElement.getBoundingClientRect().bottom + 'px';
 }
-console.log('file đã đc tải')
+
+console.log('file đã được tải');

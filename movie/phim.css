@@ -41,12 +41,8 @@
     font-size: 1.2rem;
     margin: 10px 0;
     font-family: "Qwitcher Grypen", cursive;
-    background: linear-gradient(to right, #ff0000, #ff4d4d, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  font-style: normal;
+    /* background: linear-gradient(to right, #ff0000, #ff4d4d, #ffffff); */
+    color: #ec1010;
 }
     
 /* Styles for the genre list */
@@ -228,6 +224,21 @@
     width: 100%;
     height: 100%;
 }
+.star-rating {
+    display: inline;
+    font-size: 0;
+}
+
+.star-rating .star {
+    font-size: 24px;
+    color: black; /* Màu mặc định là đen */
+    cursor: pointer;
+}
+
+.star-rating .star.filled {
+    color: #d8db0c; /* Màu vàng cho các ngôi sao đã được đánh giá */
+}
+
 @media (max-width: 768px){
     .movie-poster-container{
         width: 80%;
@@ -250,4 +261,63 @@
         font-size: 28px;
     }
 
+}
+/* Styles for iPhone portrait mode */
+@media (max-width: 430px) { /* Targets iPhone 12/13 and similar devices in portrait mode */
+    
+    .movie-poster-container {
+        width: 100%; /* Make the poster take up full width */
+        height: auto; /* Adjust height automatically */
+        margin: 0 auto; /* Center the poster */
+    }
+
+    .movie-details {
+        flex-direction: column;
+        align-items: center; /* Center align the content */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .movie-title {
+        font-size: 2rem; /* Adjust title font size */
+        text-align: center;
+    }
+
+    .movie-info {
+        width: 100%; /* Ensure movie info takes full width */
+        text-align: center; /* Center align text */
+    }
+
+    .movie-genre, 
+    .movie-release-year, 
+    .movie-description, 
+    .movie-released, 
+    .movie-rating, 
+    .movie-seasons, 
+    .movie-runtime {
+        font-size: 26px; /* Reduce font size */
+    }
+ .actors-list , .genre-list{
+    display: flex;
+    justify-content: center;
+ }
+    .genre-item, 
+    .season-item, 
+    .actor-item {
+        font-size:18px; /* Smaller font size for smaller screens */
+        padding: 5px 10px; /* Adjust padding */
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+
+    .seasons-container {
+        max-height: 120px; /* Reduce height of seasons container */
+        padding: 5px; /* Reduce padding */
+    }
+
+    .movie-poster-container:hover .movie-poster {
+        opacity: 0.8; /* Less opacity change on hover for better readability */
+    }
 }
