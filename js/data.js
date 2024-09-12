@@ -812,5 +812,42 @@ const thrillerMovies = [
   "The Bourne Supremacy", "The Bourne Ultimatum", "Collateral", "The Girl on the Train",
   "The Purge", "A Simple Favor", "The Purge: Anarchy", "Bird Box", "You Were Never Really Here"
 ];
+const phimBo = [
+  "Breaking Bad", "Game of Thrones", "Stranger Things", "The Crown", "The Witcher",
+  "The Mandalorian", "Friends", "The Office", "Money Heist", "Narcos",
+  "The Boys", "Peaky Blinders", "Vikings", "The Walking Dead", "Sherlock",
+  "Westworld", "Dark", "Better Call Saul", "Black Mirror", "The Handmaid's Tale",
+  "Suits", "True Detective", "Homeland", "Fargo", "Chernobyl", "Lucifer", 
+  "Mindhunter", "Prison Break", "Lost", "House of Cards", "Dexter",
+  "The Sopranos", "Mr. Robot", "The Umbrella Academy", "Breaking Bad", 
+  "Orange is the New Black", "The Flash", "Arrow", "Smallville", "Gotham",
+  "The Punisher", "Daredevil", "Jessica Jones", "Luke Cage", "The Defenders", 
+  "The 100", "Teen Wolf", "The Vampire Diaries", "Supernatural", "Buffy the Vampire Slayer",
+  "Chilling Adventures of Sabrina", "Riverdale", "Once Upon a Time", "Grimm", "Fringe",
+  "Doctor Who", "The Expanse", "Battlestar Galactica", "Star Trek: Discovery", "Star Trek: Picard",
+  "The Clone Wars", "Rebels", "The Bad Batch", "The Queen's Gambit", "The Stranger",
+  "The Fall", "The Haunting of Hill House", "Bates Motel", "Penny Dreadful", "American Horror Story",
+  "True Blood", "Sense8", "Altered Carbon", "The OA", "12 Monkeys", "The Leftovers", "The Originals",
+  "Shameless", "The Good Place", "Brooklyn Nine-Nine", "How I Met Your Mother", "Parks and Recreation"
+];
+
+const phimLe2 = [
+  "The Godfather", "The Dark Knight", "Inception", "Forrest Gump", "Fight Club",
+  "Pulp Fiction", "The Lord of the Rings: The Return of the King", "The Matrix", 
+  "Interstellar", "The Shawshank Redemption", "Gladiator", "Titanic", "Braveheart", 
+  "Schindler's List", "Saving Private Ryan", "The Avengers", "Iron Man", "The Wolf of Wall Street",
+  "Joker", "Avatar", "The Lion King", "Star Wars: A New Hope", "Jurassic Park", "Spider-Man: Homecoming",
+  "Black Panther", "Avengers: Endgame", "Captain America: Civil War", "Doctor Strange", "Guardians of the Galaxy",
+  "Deadpool", "John Wick", "Mad Max: Fury Road", "The Revenant", "Django Unchained", "The Departed",
+  "The Prestige", "Gone Girl", "The Social Network", "The Big Short", "La La Land", "Whiplash",
+  "A Beautiful Mind", "Good Will Hunting", "The Truman Show", "The Pursuit of Happyness", "Catch Me If You Can",
+  "The Martian", "Gravity", "Edge of Tomorrow", "Looper", "Her", "Blade Runner 2049", "Arrival",
+  "Ex Machina", "The Imitation Game", "The Theory of Everything", "Slumdog Millionaire", "The King's Speech",
+  "Argo", "Lincoln", "Spotlight", "Birdman", "The Grand Budapest Hotel", "Moonlight", "Parasite",
+  "1917", "Jojo Rabbit", "Once Upon a Time in Hollywood", "Knives Out", "Ford v Ferrari", 
+  "A Quiet Place", "It", "The Conjuring", "Get Out", "Us", "Hereditary", "The Babadook", 
+  "Midsommar", "Annihilation", "Tenet", "The Irishman", "The Hateful Eight", "Zodiac"
+];
+
   
 const apiKey = '44cedb5f';

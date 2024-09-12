@@ -270,5 +270,8 @@ function toggleDropdown(dropdownId, triggerElement) {
     dropdown.style.left = triggerElement.getBoundingClientRect().left + 'px';
     dropdown.style.top = triggerElement.getBoundingClientRect().bottom + 'px';
 }
-
+const hreftoWatch = (id)=>{
+ localStorage.setItem('MovieType',id)
+ window.location.href='../phimbo/movie.html'
+}
 console.log('file đã được tải');
